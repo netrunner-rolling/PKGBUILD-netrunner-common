@@ -1,0 +1,19 @@
+# $Id$
+# Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
+
+pkgname=netrunner-settings-autostart
+pkgver=1.0
+pkgrel=1
+pkgdesc="Global and user specific autostart applications"
+arch=('any')
+url='https://github.com/netrunner-common/netrunner-settings-autostart'
+license=('GPL')
+groups=('netrunner-common')
+makedepends=('git')
+source=('git://github.com/netrunner-common/netrunner-settings-autostart')
+md5sums=('SKIP')
+
+package() {
+  cd $srcdir/$pkgname
+  cp -aR usr $pkgdir/
+}
