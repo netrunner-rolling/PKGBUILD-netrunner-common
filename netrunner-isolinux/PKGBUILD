@@ -1,3 +1,6 @@
+# $Id$
+# Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
+
 pkgname=netrunner-isolinux
 pkgver=1.0
 pkgrel=1
@@ -5,9 +8,9 @@ pkgdesc='Development tools for Manjaro Linux (isolinux)'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='https://github.com/netrunner-rolling/artwork-gfxboot'
+conflicts=('manjaro-isolinux')
 provides=("isolinux")
 makedepends=('gfxboot' 'cpio' 'git' 'fribidi')
-conflicts=('manjaro-isolinux')
 source=("git+$url.git")
 sha256sums=('SKIP')
 

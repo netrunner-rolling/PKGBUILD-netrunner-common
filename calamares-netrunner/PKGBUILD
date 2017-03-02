@@ -1,3 +1,6 @@
+# $Id$
+# Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
+
 pkgname=calamares-netrunner
 pkgver=3.1.0
 pkgrel=1
