@@ -2,7 +2,7 @@
 # Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
 pkgname=netrunner-isolinux
-pkgver=1.0
+pkgver=(date +%Y%m%d)
 pkgrel=1
 pkgdesc='Development tools for Manjaro Linux (isolinux)'
 arch=('i686' 'x86_64')
@@ -13,15 +13,6 @@ provides=("isolinux")
 makedepends=('gfxboot' 'cpio' 'git' 'fribidi')
 source=("git+$url.git")
 sha256sums=('SKIP')
-
-# pkgver() {
-#   cd ${srcdir}/artwork-gfxboot
-#   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-# }
-
-pkgver() {
-    date +%Y%m%d
-}
 
 build() {
     cd ${srcdir}/artwork-gfxboot
