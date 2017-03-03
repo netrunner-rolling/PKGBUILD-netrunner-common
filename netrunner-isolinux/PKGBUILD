@@ -7,6 +7,7 @@ pkgrel=1
 pkgdesc='Development tools for Manjaro Linux (isolinux)'
 arch=('i686' 'x86_64')
 license=('GPL')
+groups=('netrunner-common')
 url='https://github.com/netrunner-rolling/artwork-gfxboot'
 conflicts=('manjaro-isolinux')
 provides=("isolinux")

@@ -8,6 +8,7 @@ pkgdesc="SDDM Settings for Netrunner"
 arch=('any')
 url="http://manjaro.org"
 license=('GPL')
+groups=('netrunner-common')
 makedepends=('git')
 install=netrunner-settings-sddm.install
 source=("git+https://github.com/netrunner-common/netrunner-settings-sddm.git")
