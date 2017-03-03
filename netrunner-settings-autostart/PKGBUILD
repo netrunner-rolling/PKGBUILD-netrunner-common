@@ -2,7 +2,7 @@
 # Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
 pkgname=netrunner-settings-autostart
-pkgver=$(date +%m%d)
+pkgver=$(date +%Y%m%d)
 pkgrel=1
 pkgdesc="Global and user specific autostart applications"
 arch=('any')

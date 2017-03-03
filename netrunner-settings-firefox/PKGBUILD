@@ -2,7 +2,7 @@
 # Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
 pkgname=netrunner-settings-firefox
-pkgver=$(date +%m%d)
+pkgver=$(date +%Y%m%d)
 pkgrel=1
 pkgdesc="Settings, like Bookmarks"
 arch=('any')
