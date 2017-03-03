@@ -1,0 +1,19 @@
+# $Id$
+# Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
+
+pkgname=netrunner-settings-sddm
+pkgver=$(date +%m%d)
+pkgrel=1
+pkgdesc="SDDM Settings for Netrunner"
+arch=('any')
+url="http://manjaro.org"
+license=('GPL')
+makedepends=('git')
+install=netrunner-settings-sddm.install
+source=("git+https://github.com/netrunner-common/netrunner-settings-sddm.git")
+sha256sums=('SKIP')
+
+package() {
+  cd $srcdir/$pkgname
+  cp -aR usr $pkgdir/
+}

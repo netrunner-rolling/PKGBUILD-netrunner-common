@@ -1,16 +1,16 @@
 # $Id$
 # Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
-pkgname=netrunner-settings-theming
+pkgname=netrunner-settings-kcmabout
 pkgver=$(date +%m%d)
 pkgrel=1
 pkgdesc="Default theming settings"
 arch=('any')
-url='https://github.com/netrunner-common/netrunner-settings-theming'
+url='https://github.com/netrunner-common/netrunner-settings-kcmabout'
 license=('GPL')
 groups=('netrunner-common')
 makedepends=('git')
-source=('git://github.com/netrunner-common/netrunner-settings-theming')
+source=('git://github.com/netrunner-common/netrunner-settings-kcmabout')
 md5sums=('SKIP')
 
 package() {
