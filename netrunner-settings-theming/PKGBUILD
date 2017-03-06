@@ -13,6 +13,11 @@ makedepends=('git')
 source=('git://github.com/netrunner-common/netrunner-settings-theming')
 md5sums=('SKIP')
 
+prepare() {
+  cd $srcdir/$pkgname
+  sed -i '/KDE]/a\LookAndFeelPackage=org.kde.netrunner-rolling.desktop' usr/share/default-settings/plasma5-profile/kdeglobals
+}
+
 package() {
   cd $srcdir/$pkgname
   cp -aR etc $pkgdir/
