@@ -1,0 +1,19 @@
+# $Id$
+# Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
+
+pkgname=netrunner-settings-desktop-rolling
+pkgver=$(date +%Y%m%d)
+pkgrel=1
+pkgdesc="Default desktop icons and home folder for Netrunner Rolling"
+arch=('any')
+url='https://github.com/netrunner-common/netrunner-settings-desktop-rolling'
+license=('GPL')
+groups=('netrunner-common')
+makedepends=('git')
+source=('git://github.com/netrunner-common/netrunner-settings-desktop-rolling')
+md5sums=('SKIP')
+
+package() {
+  cd $srcdir/$pkgname
+  cp -aR etc $pkgdir/
+}

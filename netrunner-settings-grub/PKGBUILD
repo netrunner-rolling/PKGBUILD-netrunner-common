@@ -13,7 +13,12 @@ makedepends=('git')
 source=('git://github.com/netrunner-common/netrunner-settings-grub')
 md5sums=('SKIP')
 
-package() {
+prepare() {
   cd $srcdir/$pkgname
-  cp -aR etc/grub.d/06_netrunner_theme $pkgdir/
+  rm etc/grub.d/10_linux #can not exist in two packages and incompatable with Manjaro base
+}
+
+  package() {
+  cd $srcdir/$pkgname
+  cp -aR etc $pkgdir
 }
