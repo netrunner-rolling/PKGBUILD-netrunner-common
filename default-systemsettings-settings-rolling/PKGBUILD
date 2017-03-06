@@ -1,0 +1,25 @@
+# $Id$
+# Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
+
+pkgname=default-systemsettings-settings-rolling
+pkgver=$(date +%Y%m%d)
+pkgrel=1
+pkgdesc="Default desktop icons and home folder for Netrunner Rolling"
+arch=('any')
+url='https://github.com/netrunner-rolling/default-systemsettings-settings-rolling'
+license=('GPL')
+groups=('netrunner-common')
+makedepends=('git')
+source=('git://github.com/netrunner-rolling/default-systemsettings-settings-rolling')
+md5sums=('SKIP')
+
+prepare() {
+  cd $srcdir/$pkgname
+  mkdir -p usr/share/default-settings/plasma5-profile/
+  mv kservices5 usr/share/default-settings/plasma5-profile/
+}
+
+package() {
+  cd $srcdir/$pkgname
+  cp -aR usr $pkgdir/
+}
