@@ -21,7 +21,6 @@ sha256sums=('SKIP')
 
 package() {
     
-
     local _dest=$pkgdir/usr/share/syslinux/theme
     install -d $_dest
     cp -v $srcdir/netrunner-syslinux-theme/syslinux/netrunner/* $_dest
