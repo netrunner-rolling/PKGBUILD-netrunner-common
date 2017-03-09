@@ -1,18 +1,18 @@
 # $Id$
 # Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
-pkgname=netrunner-release
+pkgname=netrunner-settings-samba
 pkgver=$(date +%Y%m%d)
 pkgrel=1
-pkgdesc="Adds a Netrunner Rolling lsb-release file"
+pkgdesc="Adds a smb.conf file for Netrunner Rolling"
 arch=('any')
 url="N/A"
 license=('GPL')
 groups=('netrunner-common')
 depends=('bash')
-source=("lsb-release")
+source=("smb.conf")
 md5sums=('SKIP')
 
 package() {
-  install -Dm755 lsb-release $pkgdir/etc/lsb-release
+  install -Dm755 smb.conf $pkgdir/etc/samba/smb.conf
 }
