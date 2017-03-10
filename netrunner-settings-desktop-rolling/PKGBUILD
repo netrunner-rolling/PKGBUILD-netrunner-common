@@ -6,11 +6,11 @@ pkgver=$(date +%Y.%m)
 pkgrel=1
 pkgdesc="Default desktop icons and home folder for Netrunner Rolling"
 arch=('any')
-url='https://github.com/netrunner-common/netrunner-settings-desktop-rolling'
+url='https://github.com/netrunner-rolling/netrunner-settings-desktop-rolling'
 license=('GPL')
 groups=('netrunner-common')
 makedepends=('git')
-source=('git://github.com/netrunner-common/netrunner-settings-desktop-rolling')
+source=('git://github.com/netrunner-rolling/netrunner-settings-desktop-rolling')
 md5sums=('SKIP')
 
 package() {
