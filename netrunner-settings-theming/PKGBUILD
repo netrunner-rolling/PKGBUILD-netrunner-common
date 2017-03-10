@@ -2,7 +2,7 @@
 # Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
 pkgname=netrunner-settings-theming
-pkgver=$(date +%Y%m%d)
+pkgver=$(date +%Y.%m)
 pkgrel=1
 pkgdesc="Default theming settings"
 arch=('any')
@@ -10,8 +10,10 @@ url='https://github.com/netrunner-common/netrunner-settings-theming'
 license=('GPL')
 groups=('netrunner-common')
 makedepends=('git')
-source=('git://github.com/netrunner-common/netrunner-settings-theming')
-md5sums=('SKIP')
+source=('git://github.com/netrunner-common/netrunner-settings-theming'
+        'Trolltech.conf')
+md5sums=('SKIP'
+        'SKIP')
 
 prepare() {
   cd $srcdir/$pkgname
@@ -22,4 +24,7 @@ package() {
   cd $srcdir/$pkgname
   cp -aR etc $pkgdir/
   cp -aR usr $pkgdir/
+
+# Install Trolltech.conf modified for Arch/Manjaro base
+  install -Dm755 "${srcdir}"/Trolltech.conf "${pkgdir}"/etc/skel/.config/Trolltech.conf
 }
