@@ -2,7 +2,7 @@
 # Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
 pkgname=default-systemsettings-settings-rolling
-pkgver=$(date +%Y%m%d)
+pkgver=$(date +%Y.%m)
 pkgrel=1
 pkgdesc="Default desktop icons and home folder for Netrunner Rolling"
 arch=('any')

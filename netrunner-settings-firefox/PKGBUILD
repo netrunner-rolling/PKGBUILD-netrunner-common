@@ -2,9 +2,9 @@
 # Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
 pkgname=netrunner-settings-firefox
-pkgver=$(date +%Y%m%d)
+pkgver=$(date +%Y.%m)
 pkgrel=1
-pkgdesc="Settings, like Bookmarks"
+pkgdesc="Netrunner settings for firefox, like Bookmarks"
 arch=('any')
 url='https://github.com/netrunner-common/netrunner-settings-firefox'
 license=('GPL')

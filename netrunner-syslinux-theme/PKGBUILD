@@ -11,6 +11,7 @@ pkgdesc='Netrunner Rolling syslinux theme'
 arch=('any')
 url="https://github.com/netrunner-rolling/netrunner-syslinux-theme"
 license=('GPL')
+groups=('netrunner-common')
 depends=('syslinux')
 makedepends=('git')
 provides=('syslinux-theme')

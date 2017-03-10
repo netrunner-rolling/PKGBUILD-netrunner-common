@@ -2,7 +2,7 @@
 # Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
 pkgname=netrunner-settings-grub
-pkgver=$(date +%Y%m%d)
+pkgver=$(date +%Y.%m)
 pkgrel=1
 pkgdesc="Netrunner specific grub settings"
 arch=('any')
