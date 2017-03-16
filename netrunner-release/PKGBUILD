@@ -10,9 +10,13 @@ url="N/A"
 license=('GPL')
 groups=('netrunner-common')
 depends=('bash')
+conflicts=('manjaro-release')
+install="netrunner-release.install"
 source=("lsb-release")
 md5sums=('SKIP')
 
 package() {
-  install -Dm755 lsb-release $pkgdir/etc/lsb-release
+    # Copy files
+    mkdir -p ${pkgdir}/etc
+    install -m644 ${srcdir}/lsb-release ${pkgdir}/etc/
 }
