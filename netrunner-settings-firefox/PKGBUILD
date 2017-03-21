@@ -9,10 +9,13 @@ arch=('any')
 url='https://github.com/netrunner-common/netrunner-settings-firefox'
 license=('GPL')
 groups=('netrunner-common')
-depends=(firefox-kde)
 makedepends=('git')
 source=('git://github.com/netrunner-common/netrunner-settings-firefox')
 md5sums=('SKIP')
+prepare() {
+  cd $srcdir/$pkgname
+      sed -e 's|^user_pref("extensions.enabledAddons", "ubufox.*|user_pref("extensions.enabledAddons", "anttoolbar%40ant.com:2.4.7.48,%7B972ce4c6-7e08-4474-a285-3208198ce6fd%7D:52.0");|' -i etc/skel/.mozilla/firefox/urmsktfc.default/prefs.js
+}
 
 package() {
   cd $srcdir/$pkgname
