@@ -21,4 +21,7 @@ package() {
 
 # Install prefs.js modified for proper loading of extensions in Arch/Manjaro
   install -Dm644 "${srcdir}"/prefs.js "${pkgdir}"/etc/skel/.mozilla/firefox/urmsktfc.default/prefs.js
+
+  # Remove add to serch bar, this was moved into seperate package.
+  rm -r "$pkgdir"/etc/skel/.mozilla/firefox/urmsktfc.default/extensions/add-to-searchbox%40maltekraus.de.xpi
 }
