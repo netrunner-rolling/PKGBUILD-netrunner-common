@@ -26,5 +26,5 @@ package() {
   cp -aR usr $pkgdir/
 
 # Install Trolltech.conf modified for Arch/Manjaro base
-  install -Dm755 "${srcdir}"/Trolltech.conf "${pkgdir}"/etc/skel/.config/Trolltech.conf
+  install -Dm644 "${srcdir}"/Trolltech.conf "${pkgdir}"/etc/skel/.config/Trolltech.conf
 }

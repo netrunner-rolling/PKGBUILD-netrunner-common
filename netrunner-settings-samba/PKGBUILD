@@ -14,5 +14,5 @@ source=("smb.conf")
 md5sums=('SKIP')
 
 package() {
-  install -Dm755 smb.conf $pkgdir/etc/samba/smb.conf
+  install -Dm644 smb.conf $pkgdir/etc/samba/smb.conf
 }

@@ -20,5 +20,5 @@ package() {
   cp -aR etc $pkgdir/
 
 # Install prefs.js modified for proper loading of extensions in Arch/Manjaro
-  install -Dm755 "${srcdir}"/prefs.js "${pkgdir}"/etc/skel/.mozilla/firefox/urmsktfc.default/prefs.js
+  install -Dm644 "${srcdir}"/prefs.js "${pkgdir}"/etc/skel/.mozilla/firefox/urmsktfc.default/prefs.js
 }
