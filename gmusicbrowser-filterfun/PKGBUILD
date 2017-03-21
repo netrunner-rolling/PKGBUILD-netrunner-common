@@ -58,7 +58,7 @@ package() {
   make DESTDIR="$pkgdir/" install
   
   # Install filterfun configs for Netrunner
-  install -Dm755 "${srcdir}"/gmbrc.default "${pkgdir}"/usr/share/gmusicbrowser/gmbrc.default
-  install -Dm755 "${srcdir}"/main.layout "${pkgdir}"/usr/share/gmusicbrowser/layouts/main.layout
-  install -Dm755 "${srcdir}"/filterfun.layout "${pkgdir}"/usr/share/gmusicbrowser/layouts/filterfun.layout
+  install -Dm644 "${srcdir}"/gmbrc.default "${pkgdir}"/usr/share/gmusicbrowser/gmbrc.default
+  install -Dm644 "${srcdir}"/main.layout "${pkgdir}"/usr/share/gmusicbrowser/layouts/main.layout
+  install -Dm644 "${srcdir}"/filterfun.layout "${pkgdir}"/usr/share/gmusicbrowser/layouts/filterfun.layout
 }
