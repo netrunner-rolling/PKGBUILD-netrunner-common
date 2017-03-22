@@ -1,0 +1,6 @@
+ 
+post_install() {
+    sed -e 's|^Name=.*|Name=Install Netrunner|' -i usr/share/applications/calamares.desktop
+    sed -e 's|^Comment=.*|Comment=Install the operating system to disk|' -i usr/share/applications/calamares.desktop
+    sed -e 's|^Icon=.*|Icon=calamares-netrunner|' -i usr/share/applications/calamares.desktop
+}

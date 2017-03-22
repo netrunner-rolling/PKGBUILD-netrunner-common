@@ -3,7 +3,9 @@
 
 pkgname=calamares-netrunner
 pkgver=3.1.0
+_pkgver=3.1
 pkgrel=1
+_commit=3c2275f0d7d016e92ad197bc1748bb311496c484
 pkgdesc='Distribution-independent installer framework'
 arch=('i686' 'x86_64')
 license=(GPL)
@@ -20,20 +22,24 @@ backup=('usr/share/calamares/modules/bootloader.conf'
         'usr/share/calamares/modules/initcpio.conf'
         'usr/share/calamares/modules/unpackfs.conf')
 
-source=("https://github.com/calamares/calamares/releases/download/v3.1/calamares-3.1.0.tar.gz"
-        'git+https://github.com/netrunner-rolling/calamares-netrunner')
+source+=(#"$pkgname-$pkgver.tar.gz::https://github.com/manjaro/calamares/archive/v${_pkgver}.tar.gz"
+         "$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/manjaro/calamares/archive/${_commit}.tar.gz"
+         'git+https://github.com/netrunner-rolling/calamares-netrunner')
 
-sha1sums=('1cb9399158cbd536f6cb54af44e18fd6d39c8ac8'
-         'SKIP')
+sha256sums=('0f0655224aaefb81e8aeba23cc63506899d8db442a8ef6640cf4a25293385006'
+            'SKIP')
 
 
 prepare() {
-	cp -a "$srcdir/calamares-netrunner/." "$srcdir/calamares-${pkgver}"
-	rm -rf "$srcdir/calamares-${pkgver}/.git"
+	mv ${srcdir}/calamares-${_commit} ${srcdir}/calamares-${_pkgver}
+	cd ${srcdir}/calamares-${_pkgver}
+	cp -a "${srcdir}/calamares-netrunner/." "${srcdir}/calamares-${_pkgver}"
+	rm -rf "$srcdir/calamares-${_pkgver}/.git"
+    # patches here
 }
 
 build() {
-	cd ${srcdir}/calamares-${pkgver}
+	cd ${srcdir}/calamares-${_pkgver}
 	
 	mkdir -p build
 	cd build
@@ -50,7 +56,7 @@ build() {
 }
 
 package() {
-	cd ${srcdir}/calamares-${pkgver}/build
+	cd ${srcdir}/calamares-${_pkgver}/build
 	make DESTDIR="$pkgdir" install
 	install -Dm644 "../data/calamares-netrunner.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/calamares-netrunner.png"
 	install -Dm644 "../data/calamares.desktop" "$pkgdir/usr/share/applications/calamares.desktop"
