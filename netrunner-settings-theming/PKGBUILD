@@ -18,21 +18,18 @@ md5sums=('SKIP'
 prepare() {
   cd $srcdir/$pkgname
   sed -i '/KDE]/a\LookAndFeelPackage=org.kde.netrunner-rolling.desktop' usr/share/default-settings/plasma5-profile/kdeglobals
+  sed -e 's|^ShadowSize=.*|ShadowSize=50|' -i usr/share/default-settings/plasma5-profile/breezerc
+  sed -e 's|^blurEnabled=.*|blurEnabled=true|' -i usr/share/default-settings/plasma5-profile/kwinrc
+  mv etc/gtk-2.0/gtkrc etc/skel/.gtkrc-2.0
+  mv etc/gtk-3.0 etc/skel/.config/
+  rm -r etc/gtk-2.0
 }
 
 package() {
   cd $srcdir/$pkgname
-  
-# Move gtk settings under skel  
-  mv etc/gtk-2.0/gtkrc etc/skel/.gtkrc-2.0
-  mv etc/gtk-3.0 etc/skel/.config/
-  rm -r etc/gtk-2.0
-  
   cp -aR etc $pkgdir/
   cp -aR usr $pkgdir/
-  
-
-  
+   
 # Install Trolltech.conf modified for Arch/Manjaro base
   install -Dm644 "${srcdir}"/Trolltech.conf "${pkgdir}"/etc/skel/.config/Trolltech.conf
 }
