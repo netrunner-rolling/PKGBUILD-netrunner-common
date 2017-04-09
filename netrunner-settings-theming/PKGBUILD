@@ -22,9 +22,17 @@ prepare() {
 
 package() {
   cd $srcdir/$pkgname
+  
+# Move gtk settings under skel  
+  mv etc/gtk-2.0/gtkrc etc/skel/.gtkrc-2.0
+  mv etc/gtk-3.0 etc/skel/.config/
+  rm -r etc/gtk-2.0
+  
   cp -aR etc $pkgdir/
   cp -aR usr $pkgdir/
+  
 
+  
 # Install Trolltech.conf modified for Arch/Manjaro base
   install -Dm644 "${srcdir}"/Trolltech.conf "${pkgdir}"/etc/skel/.config/Trolltech.conf
 }
