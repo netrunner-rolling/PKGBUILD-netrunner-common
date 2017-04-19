@@ -18,8 +18,10 @@ md5sums=('SKIP'
 prepare() {
   cd $srcdir/$pkgname
   sed -i '/KDE]/a\LookAndFeelPackage=org.kde.netrunner-rolling.desktop' usr/share/default-settings/plasma5-profile/kdeglobals
-  sed -e 's|^ShadowSize=.*|ShadowSize=50|' -i usr/share/default-settings/plasma5-profile/breezerc
+  sed -e 's|^ShadowSize=.*|ShadowSize=28|' -i usr/share/default-settings/plasma5-profile/breezerc
+  sed -e 's|^ShadowStrength=.*|ShadowStrength=51|' -i usr/share/default-settings/plasma5-profile/breezerc
   sed -e 's|^blurEnabled=.*|blurEnabled=true|' -i usr/share/default-settings/plasma5-profile/kwinrc
+  sed -e 's|^BorderSize=.*|BorderSize=NoSides|' -i usr/share/default-settings/plasma5-profile/kwinrc
   mv etc/gtk-2.0/gtkrc etc/skel/.gtkrc-2.0
   mv etc/gtk-3.0 etc/skel/.config/
   rm -r etc/gtk-2.0
