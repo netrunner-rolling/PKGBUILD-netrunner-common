@@ -10,6 +10,7 @@ url="N/A"
 license=('GPL')
 groups=('netrunner-common')
 depends=('bash')
+install=netrunner-settings-samba.install
 source=("smb.conf")
 md5sums=('SKIP')
 
