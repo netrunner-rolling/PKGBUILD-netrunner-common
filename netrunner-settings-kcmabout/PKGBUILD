@@ -4,7 +4,7 @@
 pkgname=netrunner-settings-kcmabout
 pkgver=$(date +%Y.%m)
 pkgrel=1
-pkgdesc="Default theming settings"
+pkgdesc="Netrunner kcmabout settings"
 arch=('any')
 url='https://github.com/netrunner-common/netrunner-settings-kcmabout'
 license=('GPL')
@@ -15,6 +15,7 @@ md5sums=('SKIP')
 
 package() {
   cd $srcdir/$pkgname
+  sed -i -e 's,BuildStamp=@@BUILD_VERSION@@,#BuildStamp=@@BUILD_VERSION@@,' etc/xdg/kcm-about-extendedrc
   cp -aR etc $pkgdir/
   cp -aR usr $pkgdir/
 }
