@@ -3,7 +3,7 @@ post_install() {
         -e "s|Manjaro Linux|Netrunner Rolling|g" \
         -e "s|http://www.manjaro.org/|http://www.netrunner.com/|g" \
         -e "s|http://bugs.manjaro.org/|http://forums.netrunner.com/|g" \
-        -e '/ID=netrunner/a\BUILD_ID=2017.04' \
+        -e '/ID=netrunner/a\BUILD_ID=2017.06' \
         -i etc/os-release
 }
 
@@ -12,6 +12,6 @@ post_remove() {
         -e "s|Netrunner Rolling|Manjaro Linux|g" \
         -e "s|http://www.netrunner.com/|http://www.manjaro.org/|g" \
         -e "s|http://forums.netrunner.com/|http://bugs.manjaro.org/|g" \
-        -e '/BUILD_ID=2017.04/d' \
+        -e '/BUILD_ID=2017.06/d' \
         -i etc/os-release
 }
