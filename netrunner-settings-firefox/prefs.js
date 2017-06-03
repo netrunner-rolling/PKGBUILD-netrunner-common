@@ -377,6 +377,7 @@ user_pref("privacy.cpd.siteSettings", true);
 user_pref("privacy.sanitize.migrateClearSavedPwdsOnExit", true);
 user_pref("privacy.sanitize.migrateFx3Prefs", true);
 user_pref("privacy.sanitize.timeSpan", 0);
+user_pref("security.insecure_field_warning.contextual.enabled", false);
 user_pref("security.warn_viewing_mixed", false);
 user_pref("services.sync.clients.lastSync", "0");
 user_pref("services.sync.clients.lastSyncLocal", "0");
