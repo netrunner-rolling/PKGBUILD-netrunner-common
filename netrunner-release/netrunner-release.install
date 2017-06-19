@@ -1,8 +1,8 @@
 post_install() {
     sed -e "s|ID=manjaro|ID=netrunner|" \
         -e "s|Manjaro Linux|Netrunner Rolling|g" \
-        -e "s|http://www.manjaro.org/|http://www.netrunner.com/|g" \
-        -e "s|http://bugs.manjaro.org/|http://forums.netrunner.com/|g" \
+        -e "s|https://www.manjaro.org/|http://www.netrunner.com/|g" \
+        -e "s|https://bugs.manjaro.org/|http://forums.netrunner.com/|g" \
         -e '/ID=netrunner/a\BUILD_ID=2017.07' \
         -i usr/lib/os-release
 }
@@ -10,8 +10,8 @@ post_install() {
 post_remove() {
     sed -e "s|ID=netrunner|ID=manjaro|" \
         -e "s|Netrunner Rolling|Manjaro Linux|g" \
-        -e "s|http://www.netrunner.com/|http://www.manjaro.org/|g" \
-        -e "s|http://forums.netrunner.com/|http://bugs.manjaro.org/|g" \
+        -e "s|http://www.netrunner.com/|https://www.manjaro.org/|g" \
+        -e "s|http://forums.netrunner.com/|https://bugs.manjaro.org/|g" \
         -e '/BUILD_ID=2017.07/d' \
         -i usr/lib/os-release
 }
