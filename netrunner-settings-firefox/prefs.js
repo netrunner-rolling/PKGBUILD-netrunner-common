@@ -147,7 +147,7 @@ user_pref("extensions.antrankservice.uuid", "{9AD5B7B7-E71D-40D1-BC71-A683801E2D
 user_pref("extensions.anttoolbar.avconv", "/usr/bin/ffmpeg");
 user_pref("extensions.anttoolbar.display_search_box", false);
 user_pref("extensions.anttoolbar.firstrun", false);
-user_pref("extensions.anttoolbar.flvdir", "~/Downloads/Ant Videos");
+user_pref("extensions.anttoolbar.flvdir", "~/Videos");
 user_pref("extensions.anttoolbar.last_heartbeat_ts", "1490102282502");
 user_pref("extensions.anttoolbar.show_not_found_window", false);
 user_pref("extensions.anttoolbar.version", "2.4.7.48");
@@ -407,4 +407,4 @@ user_pref("urlclassifier.keyupdatetime.https://sb-ssl.google.com/safebrowsing/ne
 user_pref("xpinstall.whitelist.add", "");
 user_pref("xpinstall.whitelist.add.180", "");
 user_pref("xpinstall.whitelist.add.36", "");
- 
+
