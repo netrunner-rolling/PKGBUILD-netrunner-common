@@ -10,7 +10,7 @@ url='https://github.com/netrunner-common/netrunner-settings-firefox'
 license=('GPL')
 groups=('netrunner-common')
 makedepends=('git')
-source=('git://github.com/netrunner-common/netrunner-settings-firefox'
+source=('git://github.com/netrunner-common/netrunner-settings-firefox#commit=573598a1f714f4b805a52897a29cef683d491baf'
         'prefs.js')
 md5sums=('SKIP'
          'SKIP')
@@ -27,5 +27,5 @@ package() {
   
   # Remove netrunner.js as it is ignored on Arch/Manjaro
   rm -r "$pkgdir"/etc/firefox
-  rm -r "$pkgdir"/etc/firefox-esr
 }
+
