@@ -150,7 +150,7 @@ user_pref("extensions.anttoolbar.firstrun", false);
 user_pref("extensions.anttoolbar.flvdir", "~/Videos");
 user_pref("extensions.anttoolbar.last_heartbeat_ts", "1490102282502");
 user_pref("extensions.anttoolbar.show_not_found_window", false);
-user_pref("extensions.anttoolbar.version", "2.4.7.48");
+user_pref("extensions.anttoolbar.version", "2.4.7.50");
 user_pref("extensions.enabledAddons", "anttoolbar%40ant.com:2.4.7.48,%7B972ce4c6-7e08-4474-a285-3208198ce6fd%7D:52.0");
 user_pref("extensions.enabledItems", "langpack-de@firefox-3.6.ubuntu.com:3.6,langpack-en-GB@firefox-3.6.ubuntu.com:3.6,langpack-es-AR@firefox-3.6.ubuntu.com:3.6,langpack-es-CL@firefox-3.6.ubuntu.com:3.6,langpack-es-ES@firefox-3.6.ubuntu.com:3.6,langpack-es-MX@firefox-3.6.ubuntu.com:3.6,langpack-fr@firefox-3.6.ubuntu.com:3.6,langpack-ru@firefox-3.6.ubuntu.com:3.6,langpack-en-AU@firefox-3.6.ubuntu.com:3.6,langpack-en-CA@firefox-3.6.ubuntu.com:3.6,langpack-en@firefox-3.6.ubuntu.com:3.6,langpack-zh-CN@firefox-3.6.ubuntu.com:3.6,refractor@developer.mozilla.org:1.0b3,{972ce4c6-7e08-4474-a285-3208198ce6fd}:3.6.13,linstripemodern36@webdesigns.ms11.net:3.6");
 user_pref("extensions.getAddons.cache.lastUpdate", 1490119859);
