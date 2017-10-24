@@ -4,7 +4,7 @@
 
 _pkgname=procps-ng
 pkgname=procps-ng-classic
-pkgver=3.3.11
+pkgver=3.3.12
 pkgrel=1
 pkgdesc='Utilities for monitoring your system and its processes (with classic top)'
 url='http://sourceforge.net/projects/procps-ng/'
