@@ -12,7 +12,7 @@ license=('GPL' 'LGPL')
 arch=('i686' 'x86_64')
 depends=('ncurses' 'systemd')
 source=("http://downloads.sourceforge.net/project/${_pkgname}/Production/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('e9493169a2d2adc0bc045538707310c8e877b385e4e296143b62607d2bb044ed')
+sha256sums=('6ed65ab86318f37904e8f9014415a098bec5bc53653e5d9ab404f95ca5e1a7d4')
 
 groups=('base')
 
