@@ -3,29 +3,17 @@
 
 pkgname=netrunner-settings-firefox
 pkgver=$(date +%Y.%m)
-pkgrel=1
+pkgrel=2
 pkgdesc="Netrunner settings for firefox, like Bookmarks"
 arch=('any')
-url='https://github.com/netrunner-common/netrunner-settings-firefox'
+url='https://github.com/netrunner-rolling/netrunner-settings-firefox'
 license=('GPL')
 groups=('netrunner-common')
 makedepends=('git')
-source=('git://github.com/netrunner-common/netrunner-settings-firefox#commit=573598a1f714f4b805a52897a29cef683d491baf'
-        'prefs.js')
-md5sums=('SKIP'
-         'SKIP')
+source=('git://github.com/netrunner-rolling/netrunner-settings-firefox')
+md5sums=('SKIP')
 
 package() {
   cd $srcdir/$pkgname
   cp -aR etc $pkgdir/
-
-# Install prefs.js modified for proper loading of extensions in Arch/Manjaro
-  install -Dm644 "${srcdir}"/prefs.js "${pkgdir}"/etc/skel/.mozilla/firefox/urmsktfc.default/prefs.js
-
-  # Remove add to serch bar, this was moved into seperate package.
-  rm -r "$pkgdir"/etc/skel/.mozilla/firefox/urmsktfc.default/extensions/add-to-searchbox@maltekraus.de.xpi
-  
-  # Remove netrunner.js as it is ignored on Arch/Manjaro
-  rm -r "$pkgdir"/etc/firefox
 }
-
