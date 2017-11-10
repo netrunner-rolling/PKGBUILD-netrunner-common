@@ -21,6 +21,8 @@ add_users() {
     for i in $users; do
         msg "Adding user '$i' to user-group 'sambashare'"
         usermod -a -G sambashare $i
+	msg "Set exec bit for other to /home/'$i' to allow sharing"
+	chmod o+x /home/$i	
     done
 }
 
@@ -33,7 +35,8 @@ add_group() {
 post_upgrade() {
   add_group
   echo ""
-  msg "Please add new users to 'sambashare' group."
+  msg "Please add future users to 'sambashare' group."
+  msg "and set exec bit for other to thier home folders to allow sharing"
   echo ""
 }
 
@@ -43,7 +46,8 @@ post_install() {
   add_group
   echo ""
   msg "Samba services should now be enabled."
-  msg "Please add new users to 'sambashare' group."
+  msg "Please add future users to 'sambashare' group."
+  msg "and set exec bit for other to thier home folders to allow sharing"
   msg "Reboot your system, so changes will take affect."
   echo ""
 }
