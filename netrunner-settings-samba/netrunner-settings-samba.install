@@ -22,7 +22,7 @@ add_users() {
         msg "Adding user '$i' to user-group 'sambashare'"
         usermod -a -G sambashare $i
 	msg "Set exec bit for other to /home/'$i' to allow sharing"
-	chmod o+x /home/$i	
+	chmod o+x /home/$i
     done
 }
 
