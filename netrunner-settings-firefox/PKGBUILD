@@ -3,17 +3,18 @@
 
 pkgname=netrunner-settings-firefox
 pkgver=$(date +%Y.%m)
-pkgrel=2
+pkgrel=1
 pkgdesc="Netrunner settings for firefox, like Bookmarks"
 arch=('any')
 url='https://github.com/netrunner-rolling/netrunner-settings-firefox'
 license=('GPL')
 groups=('netrunner-common')
 makedepends=('git')
-source=('git://github.com/netrunner-rolling/netrunner-settings-firefox')
+source=('git://github.com/netrunner-common/netrunner-settings-firefox')
 md5sums=('SKIP')
 
 package() {
   cd $srcdir/$pkgname
   cp -aR etc $pkgdir/
+  cp -aR usr $pkgdir/
 }
