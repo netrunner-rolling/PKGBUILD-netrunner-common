@@ -3,7 +3,7 @@
 
 pkgname=netrunner-settings-firefox
 pkgver=$(date +%Y.%m)
-pkgrel=1
+pkgrel=
 pkgdesc="Netrunner settings for firefox, like Bookmarks"
 arch=('any')
 url='https://github.com/netrunner-rolling/netrunner-settings-firefox'
@@ -12,6 +12,13 @@ groups=('netrunner-common')
 makedepends=('git')
 source=('git://github.com/netrunner-common/netrunner-settings-firefox')
 md5sums=('SKIP')
+
+prepare() {
+  cd $srcdir/$pkgname
+  rm -R etc/skel
+  rm -R etc/firefox-esr
+  rm -R usr/lib/firefox-esr
+}
 
 package() {
   cd $srcdir/$pkgname
