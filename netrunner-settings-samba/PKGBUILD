@@ -3,7 +3,7 @@
 
 pkgname=netrunner-settings-samba
 pkgver=$(date +%Y.%m)
-pkgrel=2
+pkgrel=1
 pkgdesc="Adds a smb.conf file for Netrunner Rolling"
 arch=('any')
 url="N/A"
