@@ -3,12 +3,12 @@ post_install() {
         -e "s|Manjaro Linux|Netrunner Rolling|g" \
         -e "s|https://www.manjaro.org/|http://www.netrunner.com/|g" \
         -e "s|https://bugs.manjaro.org/|http://forums.netrunner.com/|g" \
-        -e '/ID=netrunner/a\BUILD_ID=2017.12' \
+        -e '/ID=netrunner/a\BUILD_ID=2018.01' \
         -i usr/lib/os-release
 }
 
 post_upgrade() {
-    sed -e "s|BUILD_ID=2017.07|BUILD_ID=2017.12|" \
+    sed -e "s|BUILD_ID=2017.07|BUILD_ID=2018.01|" \
         -i usr/lib/os-release
 }
 
@@ -17,6 +17,6 @@ post_remove() {
         -e "s|Netrunner Rolling|Manjaro Linux|g" \
         -e "s|http://www.netrunner.com/|https://www.manjaro.org/|g" \
         -e "s|http://forums.netrunner.com/|https://bugs.manjaro.org/|g" \
-        -e '/BUILD_ID=2017.12/d' \
+        -e '/BUILD_ID=2018.01/d' \
         -i usr/lib/os-release
 }

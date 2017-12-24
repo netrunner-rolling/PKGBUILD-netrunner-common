@@ -2,7 +2,7 @@
 # Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
 pkgname=netrunner-release
-pkgver=2017.12  #$(date +%Y.%m)
+pkgver=2018.01  #$(date +%Y.%m)
 pkgrel=1
 pkgdesc="Adds a Netrunner Rolling lsb-release file"
 arch=('any')
