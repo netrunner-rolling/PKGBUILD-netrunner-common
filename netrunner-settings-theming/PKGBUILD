@@ -10,10 +10,8 @@ url='https://github.com/netrunner-common/netrunner-settings-theming'
 license=('GPL')
 groups=('netrunner-common')
 makedepends=('git')
-source=('git://github.com/netrunner-common/netrunner-settings-theming'
-        'Trolltech.conf')
-md5sums=('SKIP'
-        'SKIP')
+source=('git://github.com/netrunner-common/netrunner-settings-theming' 'Trolltech.conf' 'kcminputrc' '.imwheelrc')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
   cd $srcdir/$pkgname
@@ -32,6 +30,9 @@ package() {
   cp -aR etc $pkgdir/
   cp -aR usr $pkgdir/
    
-# Install Trolltech.conf modified for Arch/Manjaro base
+# Install modifications for Arch/Manjaro base
   install -Dm644 "${srcdir}"/Trolltech.conf "${pkgdir}"/etc/skel/.config/Trolltech.conf
+  install -Dm644 "${srcdir}"/kcminputrc "${pkgdir}"/usr/share/default-settings/plasma5-profile/kcminputrc
+  install -Dm644 "${srcdir}"/.imwheelrc "${pkgdir}"/etc/skel/.imwheelrc
+
 }
