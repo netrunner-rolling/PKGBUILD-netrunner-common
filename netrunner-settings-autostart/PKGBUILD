@@ -10,16 +10,10 @@ url='https://github.com/netrunner-common/netrunner-settings-autostart'
 license=('GPL')
 groups=('netrunner-common')
 makedepends=('git')
-source=('git://github.com/netrunner-common/netrunner-settings-autostart'
-        'imwheel.desktop')
-md5sums=('SKIP'
-         '3b976c2e19a6045acacb3a1999e8dda6')
+source=('git://github.com/netrunner-rolling/netrunner-settings-autostart')
+md5sums=('SKIP')
 
 package() {
   cd $srcdir/$pkgname
   cp -aR usr $pkgdir/
-  
-  install -Dm644 "${srcdir}"/imwheel.desktop \
-    "${pkgdir}"/usr/share/default-settings/plasma5-profile/autostart/imwheel.desktop
-
 }
