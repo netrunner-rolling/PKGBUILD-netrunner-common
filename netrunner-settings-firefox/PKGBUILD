@@ -10,6 +10,8 @@ url='https://github.com/netrunner-rolling/netrunner-settings-firefox'
 license=('GPL')
 groups=('netrunner-common')
 makedepends=('git')
+conflicts=('firefox-extension-ublock-origin' 'firefox-extension-ant-video-downloader' 'firefox-extension-add-to-search-bar')
+provides=('firefox-extension-ublock-origin')
 source=('git://github.com/netrunner-rolling/netrunner-settings-firefox')
 md5sums=('SKIP')
 
