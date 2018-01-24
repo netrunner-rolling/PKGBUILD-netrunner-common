@@ -3,7 +3,7 @@
 
 pkgname=netrunner-settings-autostart
 pkgver=$(date +%Y.%m)
-pkgrel=1
+pkgrel=2
 pkgdesc="Global and user specific autostart applications"
 arch=('any')
 url='https://github.com/netrunner-common/netrunner-settings-autostart'

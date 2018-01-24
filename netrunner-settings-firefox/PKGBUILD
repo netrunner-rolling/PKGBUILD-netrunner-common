@@ -3,7 +3,7 @@
 
 pkgname=netrunner-settings-firefox
 pkgver=$(date +%Y.%m)
-pkgrel=1
+pkgrel=7
 pkgdesc="Netrunner settings for firefox, like Bookmarks"
 arch=('any')
 url='https://github.com/netrunner-rolling/netrunner-settings-firefox'
