@@ -3,7 +3,7 @@
 
 pkgname=netrunner-settings-theming
 pkgver=$(date +%Y.%m)
-pkgrel=1
+pkgrel=2
 pkgdesc="Default theming settings"
 arch=('any')
 url='https://github.com/netrunner-common/netrunner-settings-theming'
@@ -20,6 +20,8 @@ prepare() {
   sed -e 's|^ShadowStrength=.*|ShadowStrength=51|' -i usr/share/default-settings/plasma5-profile/breezerc
   sed -e 's|^blurEnabled=.*|blurEnabled=true|' -i usr/share/default-settings/plasma5-profile/kwinrc
   sed -e 's|^BorderSize=None|BorderSize=NoSides|' -i usr/share/default-settings/plasma5-profile/kwinrc
+  sed -i '/Plugins]/a\kwin4_effect_scaleinEnabled=true' usr/share/default-settings/plasma5-profile/kwinrc
+  sed -i '/Plugins]/a\slidingpopupsEnabled[$d]' usr/share/default-settings/plasma5-profile/kwinrc  
   mv etc/gtk-2.0/gtkrc etc/skel/.gtkrc-2.0
   mv etc/gtk-3.0 etc/skel/.config/
   rm -r etc/gtk-2.0
