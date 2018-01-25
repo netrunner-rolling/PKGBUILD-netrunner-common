@@ -18,4 +18,5 @@ md5sums=('SKIP')
 package() {
   cd $srcdir/$pkgname
   cp -aR usr $pkgdir/
+  cp -aR etc $pkgdir/
 }
