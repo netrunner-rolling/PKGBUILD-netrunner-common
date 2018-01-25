@@ -3,7 +3,7 @@
 
 pkgname=netrunner-settings-theming
 pkgver=$(date +%Y.%m)
-pkgrel=2
+pkgrel=3
 pkgdesc="Default theming settings"
 arch=('any')
 url='https://github.com/netrunner-common/netrunner-settings-theming'
@@ -16,6 +16,7 @@ md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 prepare() {
   cd $srcdir/$pkgname
   sed -i '/KDE]/a\LookAndFeelPackage=org.kde.netrunner-rolling.desktop' usr/share/default-settings/plasma5-profile/kdeglobals
+  sed -i '/KDE]/a\WheelScrollLines=2' usr/share/default-settings/plasma5-profile/kdeglobals
   sed -e 's|^ShadowSize=.*|ShadowSize=28|' -i usr/share/default-settings/plasma5-profile/breezerc
   sed -e 's|^ShadowStrength=.*|ShadowStrength=51|' -i usr/share/default-settings/plasma5-profile/breezerc
   sed -e 's|^blurEnabled=.*|blurEnabled=true|' -i usr/share/default-settings/plasma5-profile/kwinrc
