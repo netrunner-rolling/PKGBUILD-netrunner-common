@@ -27,6 +27,6 @@ package_grub-theme-netrunner() {
     install=netrunner-theme.install
 
     cd grub-theme/netrunner-live
-    sed -i -e 's,.*text = "Welcome to Netrunner".*,#text = "Welcome to Netrunner",' theme.txt #remove welcome message
+    sed -i -e 's,.*text = "Welcome to Netrunner Rolling".*,#text = "Welcome to Netrunner Rolling",' theme.txt #remove welcome message
     find . -type f -exec install -D -m644 {} ${pkgdir}/usr/share/grub/themes/netrunner/{} \;
 }
