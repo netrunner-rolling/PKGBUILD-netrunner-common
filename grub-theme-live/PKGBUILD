@@ -1,12 +1,12 @@
-# Maintainer: Philip Müller <philm[at]manjaro[dog]org>
-# Contributor: artoo <artoo@manjaro.org>
+# Maintainer: Philip Müller <philm[at]netrunner[dog]org>
+# Maintainer (Netrunner): James Kittsmiller (AJSlye) <james@nulogicsystems.com>
+# Contributor: artoo <artoo@netrunner.org>
 # Contributor: anex <assassin.anex[@]gmail.com>
-
 
 pkgbase=grub-theme-live
 pkgname=grub-theme-live-netrunner
-pkgver=17.0.1
-pkgrel=1
+pkgver=17.1.1
+pkgrel=2
 pkgdesc='Netrunner Linux grub theme for install media'
 arch=('any')
 url="https://github.com/netrunner-rolling/grub-theme-live"
@@ -20,4 +20,13 @@ package_grub-theme-live-netrunner() {
 
     cd grub-theme-live
     make PREFIX=/usr DESTDIR=${pkgdir} install
+}
+
+package_grub-theme-netrunner() {
+    depends=('grub')
+    install=netrunner-theme.install
+
+    cd grub-theme/netrunner-live
+    sed -i -e 's,.*text = "Welcome to Netrunner".*,#text = "Welcome to Netrunner",' theme.txt #remove welcome message
+    find . -type f -exec install -D -m644 {} ${pkgdir}/usr/share/grub/themes/netrunner/{} \;
 }
