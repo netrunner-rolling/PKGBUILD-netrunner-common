@@ -41,8 +41,8 @@ post_upgrade() {
 }
 
 post_install() {  
-  systemctl is-active smbd >/dev/null || systemctl enable smbd
-  systemctl is-active nmbd >/dev/null || systemctl enable nmbd
+  systemctl is-active smb >/dev/null || systemctl enable smd
+  systemctl is-active nmb >/dev/null || systemctl enable nmb
 
   add_group
   echo ""
@@ -54,8 +54,8 @@ post_install() {
 }
 
 post_remove() { 
-  ! systemctl is-active smbd >/dev/null || systemctl disable smbd
-  ! systemctl is-active nmbd >/dev/null || systemctl disable nmbd
+  ! systemctl is-active smb >/dev/null || systemctl disable smb
+  ! systemctl is-active nmb >/dev/null || systemctl disable nmb
 
   echo ""
   msg "Samba services should now be disabled. Reboot your system."
