@@ -3,12 +3,13 @@
 
 pkgname=netrunner-settings-firefox
 pkgver=$(date +%Y.%m)
-pkgrel=11
+pkgrel=1
 pkgdesc="Netrunner settings for firefox, like Bookmarks"
 arch=('any')
 url='https://github.com/netrunner-rolling/netrunner-settings-firefox'
 license=('GPL')
 groups=('netrunner-common')
+depends=('plasma-browser-integration')
 makedepends=('git')
 replaces=('firefox-extension-ublock-origin' 'firefox-extension-ant-video-downloader' 'firefox-extension-add-to-search-bar')
 provides=('firefox-extension-ublock-origin')
