@@ -5,9 +5,9 @@
 
 pkgbase=grub-theme-live
 pkgname=('grub-theme-live-netrunner' 'grub-theme-netrunner')
-pkgver=17.1.1
-pkgrel=2
-pkgdesc='Netrunner Linux grub theme for install media'
+pkgver=18.0
+pkgrel=1
+pkgdesc='Netrunner Linux grub theme'
 arch=('any')
 url="https://github.com/netrunner-rolling/grub-theme-live"
 license=('GPL')
