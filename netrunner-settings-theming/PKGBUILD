@@ -22,7 +22,7 @@ prepare() {
   sed -e 's|^blurEnabled=.*|blurEnabled=true|' -i usr/share/default-settings/plasma5-profile/kwinrc
   sed -e 's|^BorderSize=None|BorderSize=NoSides|' -i usr/share/default-settings/plasma5-profile/kwinrc
   sed -i '/Effect-Blur]/a\BlurStrength=3' usr/share/default-settings/plasma5-profile/kwinrc
-  sed -i '/Effect-Blur]/a\NoiseStrength=14'usr/share/default-settings/plasma5-profile/kwinrc
+  sed -i '/Effect-Blur]/a\NoiseStrength=14' usr/share/default-settings/plasma5-profile/kwinrc
   sed -i '/Plugins]/a\contrastEnabled=true' usr/share/default-settings/plasma5-profile/kwinrc
   sed -i '/Plugins]/a\kwin4_effect_scaleinEnabled=true' usr/share/default-settings/plasma5-profile/kwinrc
   sed -i '/Plugins]/a\slidingpopupsEnabled[$d]' usr/share/default-settings/plasma5-profile/kwinrc
