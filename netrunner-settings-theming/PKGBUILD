@@ -19,15 +19,7 @@ prepare() {
   sed -i '/KDE]/a\WheelScrollLines=2' usr/share/default-settings/plasma5-profile/kdeglobals
   sed -e 's|^ShadowSize=.*|ShadowSize=28|' -i usr/share/default-settings/plasma5-profile/breezerc
   sed -e 's|^ShadowStrength=.*|ShadowStrength=51|' -i usr/share/default-settings/plasma5-profile/breezerc
-  sed -e 's|^AnimationSpeed=.*|AnimationSpeed=1|' -i usr/share/default-settings/plasma5-profile/kwinrc
-  sed -e 's|^blurEnabled=.*|blurEnabled=true|' -i usr/share/default-settings/plasma5-profile/kwinrc
-  sed -e 's|^BorderSize=None|BorderSize=NoSides|' -i usr/share/default-settings/plasma5-profile/kwinrc
-  sed -i '/CommandWindowWheel=Scroll/a\[Effect-Blur]' usr/share/default-settings/plasma5-profile/kwinrc
-  sed -i '/CommandWindowWheel=Scroll/a\\' usr/share/default-settings/plasma5-profile/kwinrc
-  sed -i '/Effect-Blur]/a\BlurStrength=3' usr/share/default-settings/plasma5-profile/kwinrc
-  sed -i '/Effect-Blur]/a\NoiseStrength=14' usr/share/default-settings/plasma5-profile/kwinrc
-  sed -e 's|^contrastEnabled=false|contrastEnabled=true|' -i usr/share/default-settings/plasma5-profile/kwinrc
-
+ 
   mv etc/gtk-2.0/gtkrc etc/skel/.gtkrc-2.0
   mv etc/gtk-3.0 etc/skel/.config/
   rm -r etc/gtk-2.0
