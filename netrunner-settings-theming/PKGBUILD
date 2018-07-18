@@ -3,21 +3,20 @@
 
 pkgname=netrunner-settings-theming
 pkgver=$(date +%Y.%m)
-pkgrel=7
+pkgrel=8
 pkgdesc="Default theming settings"
 arch=('any')
 url='https://github.com/netrunner-common/netrunner-settings-theming'
 license=('GPL')
 groups=('netrunner-common')
 makedepends=('git')
-source=('git://github.com/netrunner-common/netrunner-settings-theming' 'Trolltech.conf' 'gtk.css' 'kcminputrc' 'plasmarc' '.imwheelrc')
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+source=('git://github.com/netrunner-common/netrunner-settings-theming' 'Trolltech.conf' 'kcminputrc' 'plasmarc' '.imwheelrc')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
   cd $srcdir/$pkgname
   sed -i '/KDE]/a\LookAndFeelPackage=org.kde.netrunner-rolling.desktop' usr/share/default-settings/plasma5-profile/kdeglobals
   sed -i '/KDE]/a\WheelScrollLines=2' usr/share/default-settings/plasma5-profile/kdeglobals
-  sed -i '/Plugins]/a\force-decorations-gtk3Enabled=true' usr/share/default-settings/plasma5-profile/kwinrc
   sed -e 's|^ShadowSize=.*|ShadowSize=28|' -i usr/share/default-settings/plasma5-profile/breezerc
   sed -e 's|^ShadowStrength=.*|ShadowStrength=51|' -i usr/share/default-settings/plasma5-profile/breezerc
  
@@ -32,7 +31,6 @@ package() {
   cp -aR usr $pkgdir/
    
 # Install modifications for Arch/Manjaro base
-  install -Dm644 "${srcdir}"/gtk.css "${pkgdir}"/etc/skel/.config/gtk-3.0/gtk.css
   install -Dm644 "${srcdir}"/Trolltech.conf "${pkgdir}"/etc/skel/.config/Trolltech.conf
   install -Dm644 "${srcdir}"/kcminputrc "${pkgdir}"/usr/share/default-settings/plasma5-profile/kcminputrc
   install -Dm644 "${srcdir}"/plasmarc "${pkgdir}"/usr/share/default-settings/plasma5-profile/plasmarc
