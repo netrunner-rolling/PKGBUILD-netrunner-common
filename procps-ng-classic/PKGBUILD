@@ -1,18 +1,20 @@
 # $Id$
 # Maintainer: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
+# Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
-_pkgname=procps-ng
+_pkgname=procps
 pkgname=procps-ng-classic
-pkgver=3.3.12
+pkgver=3.3.15
 pkgrel=1
+commit=7bb949bcba13c107fa0f45d2d0298b1ad6b6d6cc
 pkgdesc='Utilities for monitoring your system and its processes (with classic top)'
-url='http://sourceforge.net/projects/procps-ng/'
+url='https://gitlab.com/procps-ng/'
 license=('GPL' 'LGPL')
 arch=('i686' 'x86_64')
 depends=('ncurses' 'systemd')
-source=("http://downloads.sourceforge.net/project/${_pkgname}/Production/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('6ed65ab86318f37904e8f9014415a098bec5bc53653e5d9ab404f95ca5e1a7d4')
+source=("https://gitlab.com/${_pkgname}-ng/${_pkgname}/-/archive/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('440af4845fee9f55b721aa456f88259668465ddb37168ea1e2d2ef195f55bbc4')
 
 groups=('base')
 
@@ -23,12 +25,14 @@ replaces=('procps' 'sysvinit-tools')
 install=install
 
 prepare() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-v${pkgver}-${commit}"
   sed 's:<ncursesw/:<:g' -i watch.c
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-v${pkgver}-${commit}"
+  ./autogen.sh
+
   ./configure \
     --prefix=/usr \
     --exec-prefix=/ \
@@ -44,7 +48,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-v${pkgver}-${commit}"
   make DESTDIR="${pkgdir}" install
 
   # provided by util-linux
