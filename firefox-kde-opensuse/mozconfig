@@ -20,8 +20,8 @@ export BUILD_OFFICIAL=1
 
 
 # System libraries
-ac_add_options --with-system-nspr
-ac_add_options --with-system-nss
+# ac_add_options --with-system-nspr
+# ac_add_options --with-system-nss
 ac_add_options --with-system-icu
 ac_add_options --with-system-jpeg
 ac_add_options --with-system-zlib
