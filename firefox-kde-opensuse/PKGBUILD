@@ -168,15 +168,15 @@ END
   "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
   # Install a wrapper to avoid confusion about binary path
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
 #!/bin/sh
-exec /usr/lib/$pkgname/firefox "\$@"
+exec /usr/lib/$_pkgname/firefox "\$@"
 END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srf "$pkgdir/usr/bin/$pkgname" \
-    "$pkgdir/usr/lib/$pkgname/firefox-bin"
+  ln -srf "$pkgdir/usr/bin/$_pkgname" \
+    "$pkgdir/usr/lib/$_pkgname/firefox-bin"
 }
 
 # vim:set sw=2 et:
