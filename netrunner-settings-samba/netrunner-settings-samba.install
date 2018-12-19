@@ -41,7 +41,7 @@ post_upgrade() {
 }
 
 post_install() {  
-  systemctl is-active smb >/dev/null || systemctl enable smd
+  systemctl is-active smb >/dev/null || systemctl enable smb
   systemctl is-active nmb >/dev/null || systemctl enable nmb
 
   add_group
