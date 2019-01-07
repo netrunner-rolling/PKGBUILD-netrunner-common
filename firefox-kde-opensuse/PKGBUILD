@@ -11,7 +11,7 @@
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
 pkgver=64.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=(x86_64)
 license=('MPL' 'GPL' 'LGPL')
@@ -26,8 +26,8 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 
 provides=("$_pkgname=${pkgver}")
 conflicts=("$_pkgname")
-_patchrev=821cfbe8efcc
-options=(!emptydirs  !makeflags)
+_patchrev=2f7023025374
+options=(!emptydirs !makeflags)
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
 _repo=https://hg.mozilla.org/mozilla-unified
 source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
@@ -45,12 +45,10 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
 	unity-menubar.patch
 	add_missing_pgo_rule.patch
         pgo_fix_missing_kdejs.patch
-        2001_system_graphite2_support.patch
-        2000_system_harfbuzz_support.patch
 )
 
 sha256sums=('SKIP'
-         '0c1a32d402a97aacb40adc16199b7074e641bc33e7b468ac7f3c1a0a29eab54a'
+         '00a298cb4c67dc11e521585027a4704b8d212f0966cd787c7dd8b0d26aeda14b'
          '677e1bde4c6b3cff114345c211805c7c43085038ca0505718a11e96432e9811a'
          '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797'
          '8986e15cf4fd215f3079ae5e2a19300dba6f357dae096b0d99ef5da0a8f478f4'
@@ -61,9 +59,7 @@ sha256sums=('SKIP'
          'ef0f90c9134ef05b950f06a3ffbd699c2e5a5f99a4cdf9868e799534d68c204f'
          '18d37f79d6919d26c7f581f4c0025b556ced05362749be29af118da05f3cfb51'
          'f9067f62a25a7a77276e15f91cc9e7ba6576315345cfc6347b1b2e884becdb0c'
-         '2797d1e61031d24ee24bf682c9447b3b9c1bca10f8e6cbd597b854af2de1ec54'
-         '78bfc4ef6cc195ab95498082d8f55ac3bafa62d0c9081f03e70456e43acd33e1'
-         '1972fdcf170b580b924a803c3485e22230c605d8acbf618fff8cdd1e7fcbeeb6')
+         '2797d1e61031d24ee24bf682c9447b3b9c1bca10f8e6cbd597b854af2de1ec54')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -110,9 +106,6 @@ prepare() {
 
   # add missing file Makefile for pgo builds
   patch -Np1 -i "$srcdir"/pgo_fix_missing_kdejs.patch
-  
-  patch -Np1 -i "$srcdir"/2000_system_harfbuzz_support.patch
-  patch -Np1 -i "$srcdir"/2001_system_graphite2_support.patch
 }
 
 build() {
@@ -136,6 +129,7 @@ package() {
   [[ "$CARCH" == "x86_64" ]] && cp "$srcdir/kde.js" obj-x86_64-pc-linux-gnu/dist/bin/defaults/pref
 
   DESTDIR="$pkgdir" ./mach install
+  find . -name '*crashreporter-symbols-full.zip' -exec cp -fvt "$startdir" {} +
 
   install -Dm644 "$srcdir/vendor.js" "$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/vendor.js"
   install -Dm644 "$srcdir/kde.js" "$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/kde.js"
