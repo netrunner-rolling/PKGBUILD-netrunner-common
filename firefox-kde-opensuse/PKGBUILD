@@ -10,8 +10,8 @@
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=64.0
-pkgrel=2
+pkgver=64.0.2
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=(x86_64)
 license=('MPL' 'GPL' 'LGPL')
@@ -23,7 +23,6 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
-
 provides=("$_pkgname=${pkgver}")
 conflicts=("$_pkgname")
 _patchrev=2f7023025374
@@ -36,16 +35,15 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         $_pkgname-symbolic.svg
         vendor.js
         kde.js
-	# Firefox patchset
-	$_pkgname-branded-icons-$_patchrev.patch::$_patchurl/$_pkgname-branded-icons.patch
-	$_pkgname-kde-$_patchrev.patch::$_patchurl/$_pkgname-kde.patch
-	# Gecko/toolkit patchset
-	mozilla-kde-$_patchrev.patch::$_patchurl/mozilla-kde.patch
-	mozilla-nongnome-proxies-$_patchrev.patch::$_patchurl/mozilla-nongnome-proxies.patch
-	unity-menubar.patch
-	add_missing_pgo_rule.patch
-        pgo_fix_missing_kdejs.patch
-)
+        # Firefox patchset
+        $_pkgname-branded-icons-$_patchrev.patch::$_patchurl/$_pkgname-branded-icons.patch
+        $_pkgname-kde-$_patchrev.patch::$_patchurl/$_pkgname-kde.patch
+        # Gecko/toolkit patchset
+        mozilla-kde-$_patchrev.patch::$_patchurl/mozilla-kde.patch
+        mozilla-nongnome-proxies-$_patchrev.patch::$_patchurl/mozilla-nongnome-proxies.patch
+        unity-menubar.patch
+        add_missing_pgo_rule.patch
+        pgo_fix_missing_kdejs.patch)
 
 sha256sums=('SKIP'
          '00a298cb4c67dc11e521585027a4704b8d212f0966cd787c7dd8b0d26aeda14b'
@@ -81,7 +79,7 @@ prepare() {
 
   cp "$srcdir/mozconfig" .mozconfig
 
-    
+
   echo -n "$_google_api_key" >google-api-key
   echo "ac_add_options --with-google-api-keyfile=\"$PWD/google-api-key\"" >>.mozconfig
 
@@ -90,14 +88,14 @@ prepare() {
 
   echo -n "$_mozilla_api_key" >mozilla-api-key
   echo "ac_add_options --with-mozilla-api-keyfile=\"$PWD/mozilla-api-key\"" >>.mozconfig
-  
+
   msg "Patching for KDE"
   patch -Np1 -i "$srcdir/mozilla-nongnome-proxies-$_patchrev.patch"
   patch -Np1 -i "$srcdir/mozilla-kde-$_patchrev.patch"
 
   patch -Np1 -i "$srcdir/$_pkgname-kde-$_patchrev.patch"
   patch -Np1 -i "$srcdir/$_pkgname-branded-icons-$_patchrev.patch"
-  
+
   # add globalmenu support
   patch -Np1 -i "$srcdir/unity-menubar.patch"
 
@@ -110,16 +108,16 @@ prepare() {
 
 build() {
   cd mozilla-unified
-  
+
   export MOZ_SOURCE_REPO="$_repo"
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
-  
-  
+
+
   # LTO needs more open files
   ulimit -n 4096
- 
-  ./mach build
+
+  xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build
   ./mach buildsymbols
 }
 
