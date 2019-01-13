@@ -11,11 +11,14 @@ license=('GPL')
 groups=('netrunner-common')
 depends=('plasma-browser-integration' 'firefox-ublock-origin' 'ocs-url')
 makedepends=('git')
-source=('git://github.com/netrunner-rolling/netrunner-settings-firefox')
-md5sums=('SKIP')
+source=('git://github.com/netrunner-rolling/netrunner-settings-firefox'
+        'netrunner-settings-firefox.hook')
+md5sums=('SKIP'
+         '53040f9e020ce5d9c6ed4b3133f012bb')
 
 package() {
   cd $srcdir/$pkgname
   cp -aR usr $pkgdir/
   cp -aR etc $pkgdir/
+  install -Dm644 $srcdir/netrunner-settings-firefox.hook $pkgdir/usr/share/libalpm/hooks/netrunner-settings-firefox.hook
 }
