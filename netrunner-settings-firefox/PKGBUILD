@@ -3,7 +3,7 @@
 
 pkgname=netrunner-settings-firefox
 pkgver=$(date +%Y.%m)
-pkgrel=1
+pkgrel=6
 pkgdesc="Netrunner settings for firefox, like Bookmarks"
 arch=('any')
 url='https://github.com/netrunner-rolling/netrunner-settings-firefox'
@@ -11,14 +11,17 @@ license=('GPL')
 groups=('netrunner-common')
 depends=('plasma-browser-integration' 'firefox-ublock-origin' 'ocs-url')
 makedepends=('git')
-source=('git://github.com/netrunner-rolling/netrunner-settings-firefox'
-        'netrunner-settings-firefox.hook')
-md5sums=('SKIP'
-         '53040f9e020ce5d9c6ed4b3133f012bb')
+source=('git://github.com/netrunner-rolling/netrunner-settings-firefox')
+md5sums=('SKIP')
 
 package() {
   cd $srcdir/$pkgname
   cp -aR usr $pkgdir/
   cp -aR etc $pkgdir/
-  install -Dm644 $srcdir/netrunner-settings-firefox.hook $pkgdir/usr/share/libalpm/hooks/netrunner-settings-firefox.hook
+
+#Hook
+  install -Dm644 firefox-pre.hook $pkgdir/usr/share/libalpm/hooks/firefox-pre.hook
+  install -Dm644 firefox-post.hook $pkgdir/usr/share/libalpm/hooks/firefox-post.hook
+  install -Dm644 firefox-kde-pre.hook $pkgdir/usr/share/libalpm/hooks/firefox-kde-pre.hook
+  install -Dm644 firefox-kde-post.hook $pkgdir/usr/share/libalpm/hooks/firefox-kde-post.hook
 }
