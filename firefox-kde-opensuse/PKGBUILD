@@ -10,14 +10,14 @@
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=64.0.2
+pkgver=65.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=(x86_64)
 license=('MPL' 'GPL' 'LGPL')
 url="https://build.opensuse.org/package/show/mozilla:Factory/MozillaFirefox"
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg nss ttf-font libpulse sqlite libvpx icu)
-makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils xorg-server-xvfb autoconf2.13 rust mercurial clang llvm jack gtk2 python nodejs python2-psutil cbindgen)
+makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils xorg-server-xvfb autoconf2.13 rust mercurial clang llvm jack gtk2 python nodejs python2-psutil cbindgen nasm)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -25,7 +25,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'hunspell-en_US: Spell checking, American English')
 provides=("$_pkgname=${pkgver}")
 conflicts=("$_pkgname")
-_patchrev=2f7023025374
+_patchrev=87f893cf45b9
 options=(!emptydirs !makeflags)
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
 _repo=https://hg.mozilla.org/mozilla-unified
@@ -52,10 +52,10 @@ sha256sums=('SKIP'
          '8986e15cf4fd215f3079ae5e2a19300dba6f357dae096b0d99ef5da0a8f478f4'
          'b8cc5f35ec35fc96ac5c5a2477b36722e373dbb57eba87eb5ad1276e4df7236d'
          '29acfc63f366510f471e395cc7a3815108072abda5851c48b64fdb894550408c'
-         '933fbd3e32b68d5096a2b516f190eba7ec718bb57a089ef8b057404369efba63'
-         '52e6ad9d35efb3a1487f511bfe69dc0a60edc682bd5aeb1e74ee615270670273'
-         'ef0f90c9134ef05b950f06a3ffbd699c2e5a5f99a4cdf9868e799534d68c204f'
-         '18d37f79d6919d26c7f581f4c0025b556ced05362749be29af118da05f3cfb51'
+         'eefe8c6d061cce4ea6e357d01f9f764aff198ddd06ff47991e10d1e8ddfc59a3'
+         '4fc2ff5a197781aff9733f6fe99c99c529eae4eb1ec5a95ef1db0a3d5529b88e'
+         'fa3222d3bc8b14b82b58a8ac2b252fdbd41768a5234d334538a1a3c703a3a73d'
+         '7df4129a0edd5c10ff0ff54584cb4c11275b4f019e6e8fc3aae69f444445642a'
          'f9067f62a25a7a77276e15f91cc9e7ba6576315345cfc6347b1b2e884becdb0c'
          '2797d1e61031d24ee24bf682c9447b3b9c1bca10f8e6cbd597b854af2de1ec54')
 
