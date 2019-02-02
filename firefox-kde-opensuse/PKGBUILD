@@ -11,13 +11,13 @@
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
 pkgver=65.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=(x86_64)
 license=('MPL' 'GPL' 'LGPL')
 url="https://build.opensuse.org/package/show/mozilla:Factory/MozillaFirefox"
-depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib ffmpeg nss ttf-font libpulse sqlite libvpx icu)
-makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils xorg-server-xvfb autoconf2.13 rust mercurial clang llvm jack gtk2 python nodejs python2-psutil cbindgen nasm)
+depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib hicolor-icon-theme ffmpeg libevent nss nspr ttf-font sqlite libvpx icu kmozillahelper)
+makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils xorg-server-xvfb libpulse autoconf2.13 rust mercurial clang llvm jack gtk2 python nodejs python2-psutil cbindgen nasm)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -43,10 +43,12 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         mozilla-nongnome-proxies-$_patchrev.patch::$_patchurl/mozilla-nongnome-proxies.patch
         unity-menubar.patch
         add_missing_pgo_rule.patch
-        pgo_fix_missing_kdejs.patch)
+        pgo_fix_missing_kdejs.patch
+        2001_system_graphite2_support.patch
+        2000_system_harfbuzz_support.patch)
 
 sha256sums=('SKIP'
-         '00a298cb4c67dc11e521585027a4704b8d212f0966cd787c7dd8b0d26aeda14b'
+         '3079615fad66b349a7444f6f01e2cbf5b63dd4b5b7fb8db9ab822bcfff4a89db'
          '677e1bde4c6b3cff114345c211805c7c43085038ca0505718a11e96432e9811a'
          '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797'
          '8986e15cf4fd215f3079ae5e2a19300dba6f357dae096b0d99ef5da0a8f478f4'
@@ -57,7 +59,9 @@ sha256sums=('SKIP'
          'fa3222d3bc8b14b82b58a8ac2b252fdbd41768a5234d334538a1a3c703a3a73d'
          '7df4129a0edd5c10ff0ff54584cb4c11275b4f019e6e8fc3aae69f444445642a'
          'f9067f62a25a7a77276e15f91cc9e7ba6576315345cfc6347b1b2e884becdb0c'
-         '2797d1e61031d24ee24bf682c9447b3b9c1bca10f8e6cbd597b854af2de1ec54')
+         '2797d1e61031d24ee24bf682c9447b3b9c1bca10f8e6cbd597b854af2de1ec54'
+         'dd0ab41965514c34464b89f41b08807debc91d9dbbf2218318dfd7aff9b0b526'
+         'f0f03134985110933af1d92cef6e2cc64d299ada7c84ffc403d25b8f7df730fd')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -104,6 +108,10 @@ prepare() {
 
   # add missing file Makefile for pgo builds
   patch -Np1 -i "$srcdir"/pgo_fix_missing_kdejs.patch
+
+  # add gentoo patches to use system libs
+  patch -Np1 -i "$srcdir"/2000_system_harfbuzz_support.patch
+  patch -Np1 -i "$srcdir"/2001_system_graphite2_support.patch
 }
 
 build() {
