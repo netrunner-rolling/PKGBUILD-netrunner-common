@@ -10,7 +10,7 @@
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=65.0.1
+pkgver=65.0.2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=(x86_64)
@@ -46,8 +46,8 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         pgo_fix_missing_kdejs.patch)
 
 sha256sums=('SKIP'
-         '531f1b0947b27d71d91b6b93b4098b89c2db205549778a7560e1992f3168afa5'
-         '677e1bde4c6b3cff114345c211805c7c43085038ca0505718a11e96432e9811a'
+         'b23085413060baf9dcae2f03b3988e49a586344e51ab30d48747ee9e1e64ea94'
+         'ec935ce1f70b287d4198bf785d0fb02564f7c1c12ad9b80a397f1a3e3cfac394'
          '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797'
          '8986e15cf4fd215f3079ae5e2a19300dba6f357dae096b0d99ef5da0a8f478f4'
          'b8cc5f35ec35fc96ac5c5a2477b36722e373dbb57eba87eb5ad1276e4df7236d'
