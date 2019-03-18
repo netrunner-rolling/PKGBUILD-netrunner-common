@@ -10,7 +10,7 @@
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=65.0.2
+pkgver=66.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=(x86_64)
@@ -81,7 +81,8 @@ prepare() {
 
 
   echo -n "$_google_api_key" >google-api-key
-  echo "ac_add_options --with-google-api-keyfile=\"$PWD/google-api-key\"" >>.mozconfig
+  echo "ac_add_options --with-google-location-service-api-keyfile=\"$PWD/google-api-key\"" >>.mozconfig
+  echo "ac_add_options --with-google-safebrowsing-api-keyfile=\"$PWD/google-api-key\"" >>.mozconfig
 
   echo -n "$_google_default_client_id $_google_default_client_secret" >google-oauth-api-key
   echo "ac_add_options --with-google-api-keyfile=\"$PWD/google-oauth-api-key\"" >>.mozconfig
