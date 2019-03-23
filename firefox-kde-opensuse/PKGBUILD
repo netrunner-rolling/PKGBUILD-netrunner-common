@@ -10,7 +10,7 @@
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=66.0
+pkgver=66.0.1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=(x86_64)
@@ -28,8 +28,9 @@ conflicts=("$_pkgname")
 options=(!emptydirs !makeflags)
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
 _patchrev=eca1c1f2fe50
-source=(https://ftp.mozilla.org/pub/firefox/releases/66.0/source/firefox-66.0.source.tar.xz
+source=(https://ftp.mozilla.org/pub/$_pkgname/releases/$pkgver/source/$_pkgname-$pkgver.source.tar.xz
         mozconfig
+        0001-bz-1468911.patch
         $_pkgname.desktop
         $_pkgname-symbolic.svg
         vendor.js
@@ -44,8 +45,9 @@ source=(https://ftp.mozilla.org/pub/firefox/releases/66.0/source/firefox-66.0.so
         add_missing_pgo_rule.patch
         pgo_fix_missing_kdejs.patch)
 
-sha256sums=('c37b253294826b6d14864dc38342edd5b174e76a272a7e5dbaca007eb2cac7b0'
+sha256sums=('5dd072db4e96f8bbedc62cfab0de3c710d95f7c65fc676f90e1e86bc4b46fab2'
          'b23085413060baf9dcae2f03b3988e49a586344e51ab30d48747ee9e1e64ea94'
+         '821f858bac2e13ce02b8c20d5387d4ecc8ab2d0e4ebe0a517cbf935da6aeb31b'
          'ec935ce1f70b287d4198bf785d0fb02564f7c1c12ad9b80a397f1a3e3cfac394'
          '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797'
          '8986e15cf4fd215f3079ae5e2a19300dba6f357dae096b0d99ef5da0a8f478f4'
@@ -71,10 +73,12 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _mozilla_api_key=16674381-f021-49de-8622-3021c5942aff
 
 prepare() {
-  cd firefox-66.0
+  cd $_pkgname-$pkgver
 
   cp "$srcdir/mozconfig" .mozconfig
 
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1521249
+  patch -Np1 -i ../0001-bz-1468911.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo "ac_add_options --with-google-location-service-api-keyfile=\"$PWD/google-api-key\"" >>.mozconfig
@@ -101,7 +105,7 @@ prepare() {
 }
 
 build() {
-  cd firefox-66.0
+  cd $_pkgname-$pkgver
 
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
@@ -115,7 +119,7 @@ build() {
 }
 
 package() {
-  cd firefox-66.0
+  cd $_pkgname-$pkgver
 
   [[ "$CARCH" == "x86_64" ]] && cp "$srcdir/kde.js" obj-x86_64-pc-linux-gnu/dist/bin/defaults/pref
 
