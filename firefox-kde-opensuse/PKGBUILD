@@ -26,8 +26,8 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 provides=("$_pkgname=${pkgver}")
 conflicts=("$_pkgname")
 options=(!emptydirs !makeflags)
-_patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
 _patchrev=eca1c1f2fe50
+_patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
 source=(https://ftp.mozilla.org/pub/$_pkgname/releases/$pkgver/source/$_pkgname-$pkgver.source.tar.xz
         mozconfig
         0001-bz-1468911.patch
