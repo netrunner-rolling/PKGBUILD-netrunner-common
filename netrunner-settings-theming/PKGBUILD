@@ -3,22 +3,22 @@
 
 pkgname=netrunner-settings-theming
 pkgver=$(date +%Y.%m)
-pkgrel=8
+pkgrel=1
 pkgdesc="Default theming settings"
 arch=('any')
 url='https://github.com/netrunner-common/netrunner-settings-theming'
 license=('GPL')
 groups=('netrunner-common')
 makedepends=('git')
-source=('git://github.com/netrunner-common/netrunner-settings-theming' 'Trolltech.conf' 'kcminputrc' 'plasmarc' '.imwheelrc')
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+source=('git://github.com/netrunner-common/netrunner-settings-theming#commit=0c4917fbceb028d0f48946f6ddef4c448354f171' 'Trolltech.conf' 'kcminputrc' 'plasmarc')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
   cd $srcdir/$pkgname
   sed -i '/KDE]/a\LookAndFeelPackage=org.kde.netrunner-rolling.desktop' usr/share/default-settings/plasma5-profile/kdeglobals
   sed -i '/KDE]/a\WheelScrollLines=2' usr/share/default-settings/plasma5-profile/kdeglobals
-  sed -e 's|^ShadowSize=.*|ShadowSize=28|' -i usr/share/default-settings/plasma5-profile/breezerc
-  sed -e 's|^ShadowStrength=.*|ShadowStrength=51|' -i usr/share/default-settings/plasma5-profile/breezerc
+  sed -e 's|^ShadowSize=.*|ShadowSize=ShadowLarge|' -i usr/share/default-settings/plasma5-profile/breezerc
+  sed -e 's|^ShadowStrength=.*|ShadowStrength=128|' -i usr/share/default-settings/plasma5-profile/breezerc
  
   mv etc/gtk-2.0/gtkrc etc/skel/.gtkrc-2.0
   mv etc/gtk-3.0 etc/skel/.config/
@@ -34,6 +34,4 @@ package() {
   install -Dm644 "${srcdir}"/Trolltech.conf "${pkgdir}"/etc/skel/.config/Trolltech.conf
   install -Dm644 "${srcdir}"/kcminputrc "${pkgdir}"/usr/share/default-settings/plasma5-profile/kcminputrc
   install -Dm644 "${srcdir}"/plasmarc "${pkgdir}"/usr/share/default-settings/plasma5-profile/plasmarc
-  install -Dm644 "${srcdir}"/.imwheelrc "${pkgdir}"/etc/skel/.imwheelrc
-
 }
