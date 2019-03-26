@@ -10,8 +10,8 @@ url='https://github.com/netrunner-common/netrunner-settings-theming'
 license=('GPL')
 groups=('netrunner-common')
 makedepends=('git')
-source=('git://github.com/netrunner-common/netrunner-settings-theming' 'Trolltech.conf' 'kcminputrc' 'plasmarc')
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+source=('git://github.com/netrunner-common/netrunner-settings-theming' 'Trolltech.conf')
+md5sums=('SKIP' 'SKIP')
 
 prepare() {
   cd $srcdir/$pkgname
@@ -19,6 +19,9 @@ prepare() {
   sed -i '/KDE]/a\WheelScrollLines=2' usr/share/default-settings/plasma5-profile/kdeglobals
   sed -i '153i[Icons]' usr/share/default-settings/plasma5-profile/kdeglobals
   sed -i '/Icons]/a\Theme=Obsidian\n' usr/share/default-settings/plasma5-profile/kdeglobals
+  sed -i '2a\\' usr/share/default-settings/plasma5-profile/plasmarc
+  sed -i '3a[Theme]' usr/share/default-settings/plasma5-profile/plasmarc
+  sed -i '/Theme]/a\name=breeze-alphablack' usr/share/default-settings/plasma5-profile/plasmarc
   sed -e 's|^ShadowSize=.*|ShadowSize=ShadowLarge|' -i usr/share/default-settings/plasma5-profile/breezerc
   sed -e 's|^ShadowStrength=.*|ShadowStrength=128|' -i usr/share/default-settings/plasma5-profile/breezerc
   sed -e 's|^library=.*|library=org.kde.kwin.aurorae|' -i usr/share/default-settings/plasma5-profile/kwinrc
@@ -32,6 +35,4 @@ package() {
    
 # Install modifications for Arch/Manjaro base
   install -Dm644 "${srcdir}"/Trolltech.conf "${pkgdir}"/etc/skel/.config/Trolltech.conf
-  install -Dm644 "${srcdir}"/kcminputrc "${pkgdir}"/usr/share/default-settings/plasma5-profile/kcminputrc
-  install -Dm644 "${srcdir}"/plasmarc "${pkgdir}"/usr/share/default-settings/plasma5-profile/plasmarc
 }
