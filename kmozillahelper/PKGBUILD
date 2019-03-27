@@ -1,28 +1,40 @@
-# Maintainer: Thaodan <theodorstormgrade@gmail.com>
 # Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
+# Maintainer: Bernhard Landauer <oberon@manjaro.org>
+# Maintainer: FadeMind <fademind@gmail.com>
+# Maintainer: Ramon Buldó <ramon@manjaro.org>
+# Contributor: Weng Xuetian <wengxt@gmail.com>
+# Contributor: Yegorius <yegorius@domic.us>
 
 pkgname=kmozillahelper
 pkgver=5.0.3
 pkgrel=1
-pkgdesc="Mozilla KDE Integration."
-url="https://github.com/openSUSE/kmozillahelper"
-arch=("i686" "x86_64")
+pkgdesc="Mozilla KDE Integration"
+url="https://github.com/openSUSE/$pkgname"
+arch=('i686' 'x86_64')
 license=('MIT')
-depends=("kio" "knotifications" "kwindowsystem" "ki18n")
-makedepends=("cmake" "extra-cmake-modules")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/openSUSE/kmozillahelper/archive/v${pkgver}.tar.gz")
-md5sums=('3e39b5a6d38a88f77cb65e91e5bae8b5')
+depends=('ki18n' 'kio' 'knotifications' 'kwindowsystem')
+makedepends=('cmake' 'extra-cmake-modules' 'python')
+source=("$pkgname-$pkgver::$url/archive/v$pkgver.tar.gz")
+sha256sums=('7be4dbb1cd6b9ced0350016db0a0232aaa43777281672c39b2514df3bb5fbb90')
+
+prepare() {
+    mv $srcdir/$pkgname-$pkgver $srcdir/$pkgname
+    if [[ -d build ]]; then
+        rm -Rf build
+    fi
+    mkdir -p build
+}
 
 build() {
-	mkdir -p "$srcdir/$pkgname-build"
-	cd "$srcdir/$pkgname-build"
-
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release "$srcdir/${pkgname}-${pkgver}"
-	make
+    cd build  
+    cmake ../$pkgname \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr
+    make
 }
 
 package() {
-	cd "$srcdir/$pkgname-build"
-	make DESTDIR="$pkgdir" install
-	install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
+    make -C build DESTDIR="$pkgdir" install
+    install -Dm644 $pkgname/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+} 
+
