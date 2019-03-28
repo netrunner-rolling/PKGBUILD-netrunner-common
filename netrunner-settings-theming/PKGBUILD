@@ -10,22 +10,15 @@ url='https://github.com/netrunner-common/netrunner-settings-theming'
 license=('GPL')
 groups=('netrunner-common')
 makedepends=('git')
-source=('git://github.com/netrunner-common/netrunner-settings-theming' 'Trolltech.conf')
+source=('git://github.com/netrunner-common/netrunner-settings-theming#commit=32317cfc2cf2cf6f5e243357038fc222ac502118' 'Trolltech.conf')
 md5sums=('SKIP' 'SKIP')
 
 prepare() {
   cd $srcdir/$pkgname
-  sed -i '/KDE]/a\LookAndFeelPackage=org.kde.netrunner-black.desktop' usr/share/default-settings/plasma5-profile/kdeglobals
   sed -i '/KDE]/a\WheelScrollLines=2' usr/share/default-settings/plasma5-profile/kdeglobals
-  sed -i '153i[Icons]' usr/share/default-settings/plasma5-profile/kdeglobals
-  sed -i '/Icons]/a\Theme=Obsidian\n' usr/share/default-settings/plasma5-profile/kdeglobals
-  sed -i '2a\\' usr/share/default-settings/plasma5-profile/plasmarc
-  sed -i '3a[Theme]' usr/share/default-settings/plasma5-profile/plasmarc
-  sed -i '/Theme]/a\name=breeze-alphablack' usr/share/default-settings/plasma5-profile/plasmarc
+  sed -i '/KDE]/a\LookAndFeelPackage=org.kde.netrunner-black.desktop' usr/share/default-settings/plasma5-profile/kdeglobals
   sed -e 's|^ShadowSize=.*|ShadowSize=ShadowLarge|' -i usr/share/default-settings/plasma5-profile/breezerc
   sed -e 's|^ShadowStrength=.*|ShadowStrength=128|' -i usr/share/default-settings/plasma5-profile/breezerc
-  sed -e 's|^library=.*|library=org.kde.kwin.aurorae|' -i usr/share/default-settings/plasma5-profile/kwinrc
-  sed -i '/aurorae/a\theme=__aurorae__svg__FormaN' usr/share/default-settings/plasma5-profile/kwinrc
 }
 
 package() {
