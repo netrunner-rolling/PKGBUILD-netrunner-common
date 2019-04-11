@@ -1,0 +1,20 @@
+# $Id$
+# Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
+
+pkgname=netrunner-rolling-settings
+pkgver=$(date +%Y.%m)
+pkgrel=2
+pkgdesc="Default theming settings"
+arch=('any')
+url='https://github.com/netrunner-rolling/netrunner-rolling-settings'
+license=('GPL')
+groups=('netrunner-common')
+makedepends=('git')
+source=('git://github.com/netrunner-rolling/netrunner-rolling-settings')
+md5sums=('SKIP')
+
+package() {
+  cd $srcdir/$pkgname
+  cp -aR etc $pkgdir/
+  cp -aR usr $pkgdir/
+}

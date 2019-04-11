@@ -10,16 +10,8 @@ url='https://github.com/netrunner-common/netrunner-settings-theming'
 license=('GPL')
 groups=('netrunner-common')
 makedepends=('git')
-source=('git://github.com/netrunner-common/netrunner-settings-theming#commit=32317cfc2cf2cf6f5e243357038fc222ac502118' 'Trolltech.conf')
+source=('git://github.com/netrunner-common/netrunner-settings-theming' 'Trolltech.conf')
 md5sums=('SKIP' 'SKIP')
-
-prepare() {
-  cd $srcdir/$pkgname
-  sed -i '/KDE]/a\WheelScrollLines=2' usr/share/default-settings/plasma5-profile/kdeglobals
-  sed -i '/KDE]/a\LookAndFeelPackage=org.kde.netrunner-black.desktop' usr/share/default-settings/plasma5-profile/kdeglobals
-  sed -e 's|^ShadowSize=.*|ShadowSize=ShadowLarge|' -i usr/share/default-settings/plasma5-profile/breezerc
-  sed -e 's|^ShadowStrength=.*|ShadowStrength=128|' -i usr/share/default-settings/plasma5-profile/breezerc
-}
 
 package() {
   cd $srcdir/$pkgname

@@ -8,10 +8,8 @@ post_install() {
 }
 
 post_upgrade() {
-    sed -e "s|BUILD_ID=2018.01|BUILD_ID=2019.04|" \
-    sed -e "s|BUILD_ID=2018.06|BUILD_ID=2019.04|" \
-    sed -e "s|BUILD_ID=2018.08|BUILD_ID=2019.04|" \
-    -i usr/lib/os-release
+    sed -e "s|^BUILD_ID=.*|BUILD_ID=2019.04|" \
+        -i usr/lib/os-release
 }
 
 post_remove() {
