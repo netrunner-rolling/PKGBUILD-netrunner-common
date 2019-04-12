@@ -10,10 +10,11 @@ url="http://manjaro.org"
 license=('GPL')
 groups=('netrunner-common')
 makedepends=('git')
+backup=('etc/sddm.conf')
 source=("git+https://github.com/netrunner-common/netrunner-settings-sddm.git")
 sha256sums=('SKIP')
 
 package() {
   cd $srcdir/$pkgname
-  cp -aR usr $pkgdir/
+  cp -aR etc $pkgdir/
 }
