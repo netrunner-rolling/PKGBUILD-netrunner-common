@@ -1,6 +1,6 @@
-# Maintainer: Philip Müller <philm[at]netrunner[dog]org>
-# Maintainer (Netrunner): James Kittsmiller (AJSlye) <james@nulogicsystems.com>
-# Contributor: artoo <artoo@netrunner.org>
+# Maintainer: Philip Müller <philm[at]manjaro[dog]org>
+# Maintainer (AJSlye): James Kittsmiller (AJSlye) <james@nulogicsystems.com>
+# Contributor: artoo <artoo@manjaro.org>
 # Contributor: anex <assassin.anex[@]gmail.com>
 
 pkgbase=grub-theme-live

@@ -24,4 +24,6 @@ package() {
   install -Dm644 firefox-post.hook $pkgdir/usr/share/libalpm/hooks/firefox-post.hook
   install -Dm644 firefox-kde-pre.hook $pkgdir/usr/share/libalpm/hooks/firefox-kde-pre.hook
   install -Dm644 firefox-kde-post.hook $pkgdir/usr/share/libalpm/hooks/firefox-kde-post.hook
+  install -Dm644 thunderbird-pre.hook $pkgdir/usr/share/libalpm/hooks/thunderbird-pre.hook
+  install -Dm644 thunderbird-post.hook $pkgdir/usr/share/libalpm/hooks/thunderbird-post.hook
 }
