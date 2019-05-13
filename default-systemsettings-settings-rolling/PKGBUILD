@@ -4,7 +4,7 @@
 pkgname=default-systemsettings-settings-rolling
 pkgver=$(date +%Y.%m)
 pkgrel=1
-pkgdesc="Default desktop icons and home folder for Netrunner Rolling"
+pkgdesc="Different group and sort of KDE System Settings items for Netrunner Rolling"
 arch=('any')
 url='https://github.com/netrunner-rolling/default-systemsettings-settings-rolling'
 license=('GPL')
